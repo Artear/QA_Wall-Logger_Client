@@ -1,4 +1,4 @@
-package com.qa_wall_logger_client.log.log;
+package com.qa_wall_logger_client.log;
 
 import java.util.ArrayList;
 import java.util.List;

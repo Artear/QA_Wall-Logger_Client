@@ -1,6 +1,6 @@
-package com.qa_wall_logger_client.log;
+package com.qa_wall_logger_client;
 
-import com.qa_wall_logger_client.log.log.Log;
+import com.qa_wall_logger_client.log.Log;
 
 
 public final class RemoteLogger
