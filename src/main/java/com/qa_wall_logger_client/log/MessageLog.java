@@ -5,13 +5,15 @@ import java.util.List;
 
 public class MessageLog implements Log
 {
+    private long time;
     private String logMsg;
 
     /**
      * @param logMsg a message to identify the com.qa_wall_logger_client.log
      */
-    public MessageLog(String logMsg)
+    public MessageLog(long time, String logMsg)
     {
+        this.time = time;
         this.logMsg = logMsg;
     }
 
@@ -22,6 +24,11 @@ public class MessageLog implements Log
         path.add("message.php");
 
         return path;
+    }
+
+    public long getTime()
+    {
+        return time;
     }
 
     public String getLogMsg()
