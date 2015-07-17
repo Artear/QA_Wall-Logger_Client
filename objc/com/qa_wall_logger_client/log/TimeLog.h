@@ -16,8 +16,8 @@
 
 /**
  @param logMsg a message to identify the com.qa_wall_logger_client.log
- @param timeStart the time in milliseconds since January 1, 1970 00:00:00.0 UTC when the event started
- @param timeEnd the time in milliseconds since January 1, 1970 00:00:00.0 UTC when the event ended
+ @param timeStart Epoch (milliseconds since 1 jan 1970)  when the event started
+ @param timeEnd Epoch (milliseconds since 1 jan 1970) when the event ended
  */
 - (instancetype)initWithNSString:(NSString *)logMsg
                         withLong:(jlong)timeStart

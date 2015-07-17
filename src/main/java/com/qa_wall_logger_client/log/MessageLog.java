@@ -9,6 +9,7 @@ public class MessageLog implements Log
     private String logMsg;
 
     /**
+     * @param time Epoch (milliseconds since 1 jan 1970) when the event happened
      * @param logMsg a message to identify the com.qa_wall_logger_client.log
      */
     public MessageLog(long time, String logMsg)
