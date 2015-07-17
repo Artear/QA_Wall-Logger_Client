@@ -63,7 +63,7 @@ public class SendMessage
         //Remote Logger usage
 
         //Send message
-        MessageLog messageLog = new MessageLog("Hello World!");
+        MessageLog messageLog = new MessageLog(System.currentTimeMillis(), "Hello World!");
         remoteLogger.send(messageLog);
 
         //Send time
