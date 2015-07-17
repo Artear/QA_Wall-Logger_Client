@@ -1,8 +1,5 @@
 package com.qa_wall_logger_client.log;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class TimeLog implements Log
 {
     private String logMsg;
@@ -19,15 +16,6 @@ public class TimeLog implements Log
         this.logMsg = logMsg;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
-    }
-
-    @Override
-    public List<String> getUrlPaths()
-    {
-        ArrayList<String> path = new ArrayList<>();
-        path.add("time.php");
-
-        return path;
     }
 
     public String getLogMsg()

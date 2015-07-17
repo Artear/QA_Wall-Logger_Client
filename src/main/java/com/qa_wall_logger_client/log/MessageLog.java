@@ -1,8 +1,5 @@
 package com.qa_wall_logger_client.log;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MessageLog implements Log
 {
     private long time;
@@ -16,15 +13,6 @@ public class MessageLog implements Log
     {
         this.time = time;
         this.logMsg = logMsg;
-    }
-
-    @Override
-    public List<String> getUrlPaths()
-    {
-        ArrayList<String> path = new ArrayList<>();
-        path.add("message.php");
-
-        return path;
     }
 
     public long getTime()

@@ -14,24 +14,15 @@ public final class RemoteLogger
 
     public void send(Log log)
     {
-        String url = listener.onGetServerUrl();
-
-        for (String path : log.getUrlPaths())
-        {
-            url += "/" + path;
-        }
-
         String parsedLog = listener.onParseToJson(log);
 
-        listener.onSentToNetwork(url, parsedLog);
+        listener.onSentToNetwork(parsedLog);
     }
 
     public interface Listener
     {
-        String onGetServerUrl();
-
         String onParseToJson(Log log);
 
-        void onSentToNetwork(String serviceUrl, String parsedObject);
+        void onSentToNetwork(String parsedObject);
     }
 }
