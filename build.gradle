@@ -1,9 +1,9 @@
-group 'QA_Wall-Logger_Client'
-version '1.0-SNAPSHOT'
+group 'QA_Wall-Logger_Client-Logger'
+version '1.0'
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.6
+sourceCompatibility = 1.5
 
 repositories {
     mavenCentral()
