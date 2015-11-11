@@ -1,4 +1,4 @@
-package com.qa_wall_logger_client.sample;
+package sample;
 
 
 import com.google.gson.Gson;
