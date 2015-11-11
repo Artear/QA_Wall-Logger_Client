@@ -23,6 +23,10 @@ public class Log {
         this.message = message;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public Type getType() {
         return type;
     }
