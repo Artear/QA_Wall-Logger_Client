@@ -6,10 +6,23 @@ import com.qa_wall_logger_client.log.Log;
 public final class RemoteLogger
 {
     private Listener listener;
+    private String urlRemote;
 
-    public RemoteLogger(Listener listener)
+    public RemoteLogger(){
+
+    }
+
+    public void setRemoteListener(Listener listener)
     {
         this.listener = listener;
+    }
+
+    public String getUrlRemote(){
+        return urlRemote;
+    }
+
+    public void setUrlRemote(String urlRemote){
+        this.urlRemote = urlRemote;
     }
 
     public void send(Log log)
