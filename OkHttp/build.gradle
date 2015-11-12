@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    compile project(':Logger_Client')
+    provided project(':Logger_Client')
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
 
