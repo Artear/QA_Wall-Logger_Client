@@ -10,17 +10,14 @@ import java.io.IOException;
 public class QAWallInterceptor implements Interceptor
 {
     private static final String START_END_EVENT = "START_END";
-    private static final String URL_REMOTE = "";
 
     public static final MediaType JSON  = MediaType.parse("application/json; charset=utf-8");
 
     private final RemoteLogger remoteLogger;
 
-    public QAWallInterceptor()
+    public QAWallInterceptor(final String urlRemote)
     {
-        remoteLogger = new RemoteLogger();
-        remoteLogger.setUrlRemote(URL_REMOTE);
-        remoteLogger.setRemoteListener(new RemoteLogger.Listener()
+        remoteLogger = new RemoteLogger(new RemoteLogger.Listener()
         {
             @Override
             public String onParseToJson(final Log log)
@@ -36,7 +33,7 @@ public class QAWallInterceptor implements Interceptor
 
                 RequestBody body = RequestBody.create(JSON, parsedObject);
                 Request request = new Request.Builder()
-                        .url(remoteLogger.getUrlRemote())
+                        .url(urlRemote)
                         .post(body)
                         .build();
                 try
@@ -44,7 +41,8 @@ public class QAWallInterceptor implements Interceptor
                     Response response = client.newCall(request).execute();
                 } catch (IOException e)
                 {
-
+                    System.out.println("Error: " + e.getMessage() + ", At Milliseconds:"
+                            + System.nanoTime());
                 }
 
             }
