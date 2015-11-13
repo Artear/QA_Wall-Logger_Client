@@ -7,10 +7,10 @@ public class InterceptorController
 {
     private final OkHttpClient client;
 
-    public InterceptorController()
+    public InterceptorController(final String urlRemote)
     {
         client = new OkHttpClient();
-        client.interceptors().add(new QAWallInterceptor());
+        client.interceptors().add(new QAWallInterceptor(urlRemote));
 
     }
 

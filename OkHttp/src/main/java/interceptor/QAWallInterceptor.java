@@ -32,8 +32,7 @@ public class QAWallInterceptor implements Interceptor
                 OkHttpClient client = new OkHttpClient();
 
                 RequestBody body = RequestBody.create(JSON, parsedObject);
-                Request request = new Request.Builder()
-                        .url(urlRemote)
+                Request request = new Request.Builder().url(urlRemote)
                         .post(body)
                         .build();
                 try

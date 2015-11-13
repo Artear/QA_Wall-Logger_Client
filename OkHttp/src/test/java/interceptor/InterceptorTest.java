@@ -10,11 +10,13 @@ import java.io.IOException;
 public class InterceptorTest
 {
 
+    private static final String URL_TEST = "http://192.168.15.67:9188";
+
     @Test
-    public void multiplicationOfZeroIntegersShouldReturnZero() {
+    public void interceptorTest() {
 
         // MyClass is tested
-        InterceptorController tester = new InterceptorController();
+        InterceptorController tester = new InterceptorController(URL_TEST);
 
         Request request = new Request.Builder()
                 .url("http://www.publicobject.com/helloworld.txt")
@@ -32,7 +34,10 @@ public class InterceptorTest
         }
 
         Assert.assertNotNull(response);
+        Assert.assertNotNull(response.message());
         Assert.assertNotNull(response.body());
+
+        System.out.print(response.message());
 
     }
 
