@@ -1,9 +1,16 @@
-group 'QA_Wall-Logger_Client-Samples'
-version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
 
-sourceCompatibility = 1.7
+subprojects {
+    apply plugin: 'java'
+    group = 'QA_Wall-Logger_Client'
+    version = '0.5'
+    sourceCompatibility = 1.7
+
+    repositories {
+        mavenCentral()
+    }
+}
+
 
 repositories {
     mavenCentral()
@@ -26,4 +33,45 @@ configure(allprojects) {
     apply plugin: 'propdeps-maven'
     apply plugin: 'propdeps-idea'
     apply plugin: 'propdeps-eclipse'
+}
+
+
+project(':Logger_Client') {
+    //jar.archiveName = "Logger_Client.jar"
+}
+
+project(':Logger_Client-debug') {
+    //jar.archiveName = "Logger_Client-debug.jar"
+
+    dependencies {
+        compile project(':Logger_Client')
+    }
+}
+
+project(':Logger_Client-release') {
+    //jar.archiveName = "Logger_Client-release.jar"
+
+    dependencies {
+        compile project(':Logger_Client')
+    }
+}
+
+project(':Logger_Client-OkHttp') {
+    //jar.archiveName = "Logger_Client-OkHttp.jar"
+
+    dependencies {
+        provided project(':Logger_Client-debug')
+        compile 'com.google.code.gson:gson:2.4'
+        compile 'com.squareup.okhttp:okhttp:2.5.0'
+    }
+}
+
+project(':Logger_Client-Samples') {
+    //jar.archiveName = "Logger_Client-Samples.jar"
+
+    dependencies {
+        compile project(':Logger_Client-debug')
+        compile 'com.google.code.gson:gson:2.4'
+        compile 'com.squareup.okhttp:okhttp:2.5.0'
+    }
 }

@@ -1,1 +1,1 @@
-include 'Logger_Client', 'Logger_Client-debug', 'Logger_Client-release', 'Samples', 'OkHttp'
+include 'Logger_Client', 'Logger_Client-debug', 'Logger_Client-release', 'Logger_Client-Samples', 'Logger_Client-OkHttp'
