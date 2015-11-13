@@ -33,11 +33,13 @@ public class InterceptorTest
             e.printStackTrace();
         }
 
+        response = null;
+
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.message());
         Assert.assertNotNull(response.body());
 
-        System.out.print(response.message());
+        System.out.println("Message: " + response.message() + ", Code:" + response.code());
 
     }
 
