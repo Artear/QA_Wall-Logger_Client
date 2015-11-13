@@ -1,5 +1,6 @@
 package interceptor;
 
+import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import org.junit.Assert;
@@ -12,11 +13,15 @@ public class InterceptorTest
 
     private static final String URL_TEST = "http://192.168.15.67:9188";
 
+    private OkHttpClient client;
+
     @Test
     public void interceptorTest() {
 
-        // MyClass is tested
-        InterceptorController tester = new InterceptorController(URL_TEST);
+        // QAWallInterceptor is tested
+
+        client = new OkHttpClient();
+        client.interceptors().add(new QAWallInterceptor(URL_TEST));
 
         Request request = new Request.Builder()
                 .url("http://www.publicobject.com/helloworld.txt")
@@ -27,20 +32,17 @@ public class InterceptorTest
 
         try
         {
-            response = tester.getOkHttpClient().newCall(request).execute();
+            response = client.newCall(request).execute();
         } catch (IOException e)
         {
             e.printStackTrace();
         }
-
-        response = null;
 
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.message());
         Assert.assertNotNull(response.body());
 
         System.out.println("Message: " + response.message() + ", Code:" + response.code());
-
     }
 
 
