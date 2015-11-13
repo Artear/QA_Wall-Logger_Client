@@ -1,7 +1,9 @@
 package interceptor;
 
 import com.google.gson.Gson;
+import com.qa_wall_logger_client.IRemoteLogger;
 import com.qa_wall_logger_client.RemoteLogger;
+import com.qa_wall_logger_client.log.ILog;
 import com.qa_wall_logger_client.log.Log;
 import com.squareup.okhttp.*;
 
@@ -13,14 +15,14 @@ public class QAWallInterceptor implements Interceptor
 
     public static final MediaType JSON  = MediaType.parse("application/json; charset=utf-8");
 
-    private final RemoteLogger remoteLogger;
+    private final IRemoteLogger remoteLogger;
 
     public QAWallInterceptor(final String urlRemote)
     {
-        remoteLogger = new RemoteLogger(new RemoteLogger.Listener()
+        remoteLogger = new RemoteLogger(new IRemoteLogger.Listener()
         {
             @Override
-            public String onParseToJson(final Log log)
+            public String onParseToJson(final ILog log)
             {
                 return new Gson().toJson(log);
             }

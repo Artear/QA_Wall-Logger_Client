@@ -6,8 +6,9 @@ repositories {
     mavenCentral()
 }
 
-jar.archiveName = "Logger_Client-release.jar"
+jar.archiveName = "Logger_Client-debug.jar"
 
 dependencies {
+    provided project(':Logger_Client')
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

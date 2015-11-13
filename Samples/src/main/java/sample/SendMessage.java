@@ -2,7 +2,9 @@ package sample;
 
 
 import com.google.gson.Gson;
+import com.qa_wall_logger_client.IRemoteLogger;
 import com.qa_wall_logger_client.RemoteLogger;
+import com.qa_wall_logger_client.log.ILog;
 import com.qa_wall_logger_client.log.Log;
 
 public class SendMessage
@@ -11,10 +13,10 @@ public class SendMessage
     {
         //Remote Logger instantiation;
 
-        RemoteLogger remoteLogger = new RemoteLogger(new RemoteLogger.Listener()
+        RemoteLogger remoteLogger = new RemoteLogger(new IRemoteLogger.Listener()
         {
             @Override
-            public String onParseToJson(final Log log)
+            public String onParseToJson(final ILog log)
             {
                 return new Gson().toJson(log);
             }
