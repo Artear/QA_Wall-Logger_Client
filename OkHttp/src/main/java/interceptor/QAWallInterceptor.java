@@ -57,7 +57,8 @@ public class QAWallInterceptor implements Interceptor
 
         Log logStart = new Log(START_END_EVENT, Log.Type.PERIOD_START, t1,
                 String.format("Sending request %s on %s%n%s",
-                        request.url(), chain.connection(), request.headers()));
+                        request.url(), chain.connection(), request.headers()),
+                "jUnitTestDevice");
 
         remoteLogger.send(logStart);
 
@@ -67,7 +68,8 @@ public class QAWallInterceptor implements Interceptor
 
         Log logEnd = new Log(START_END_EVENT, Log.Type.PERIOD_END, t2,
                 String.format("Received response for %s in %.1fms%n%s",
-                        response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+                        response.request().url(), (t2 - t1) / 1e6d,
+                        response.headers()), "jUnitTestDevice");
 
         remoteLogger.send(logEnd);
 

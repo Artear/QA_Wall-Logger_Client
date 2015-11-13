@@ -33,14 +33,14 @@ public class SendMessage
         //Remote Logger usage
 
         //Send Period
-        Log periodStart = new Log("Test1", Log.Type.PERIOD_START, System.currentTimeMillis(), "Hello World!");
+        Log periodStart = new Log("Test1", Log.Type.PERIOD_START, System.currentTimeMillis(), "Hello World!", "device1");
         remoteLogger.send(periodStart);
 
-        Log periodEnd = new Log("Test1", Log.Type.PERIOD_END, System.currentTimeMillis()+ 5000, "Bye Bye World!");
+        Log periodEnd = new Log("Test1", Log.Type.PERIOD_END, System.currentTimeMillis()+ 5000, "Bye Bye World!", "device1");
         remoteLogger.send(periodEnd);
 
         //Send time
-        Log timeLog = new Log("Test2", Log.Type.EVENT,  System.currentTimeMillis() ,"http://www.google.com");
+        Log timeLog = new Log("Test2", Log.Type.EVENT,  System.currentTimeMillis() ,"http://www.google.com", "device1");
         remoteLogger.send(timeLog);
     }
 }
