@@ -1,9 +1,9 @@
 package com.qa_wall_logger_client;
 
-import com.qa_wall_logger_client.log.Log;
+import com.qa_wall_logger_client.log.ILog;
 
 
-public final class RemoteLogger
+public final class RemoteLogger implements IRemoteLogger
 {
     private Listener listener;
 
@@ -12,17 +12,11 @@ public final class RemoteLogger
         this.listener = listener;
     }
 
-    public void send(Log log)
+    @Override
+    public void send(ILog log)
     {
         String parsedLog = listener.onParseToJson(log);
 
         listener.onWriteToLog(parsedLog);
-    }
-
-    public interface Listener
-    {
-        String onParseToJson(Log log);
-
-        void onWriteToLog(String parsedLog);
     }
 }

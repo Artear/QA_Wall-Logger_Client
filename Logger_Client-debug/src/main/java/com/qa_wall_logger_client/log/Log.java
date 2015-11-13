@@ -1,12 +1,7 @@
 package com.qa_wall_logger_client.log;
 
-public class Log
+public class Log implements ILog
 {
-    public enum Type
-    {
-        PERIOD_START, PERIOD_END, EVENT
-    }
-
     private String id;
     private final Type type;
     private long time;
@@ -19,8 +14,7 @@ public class Log
      * @param time    Epoch (milliseconds since 1 jan 1970) when the period start;
      * @param message a message to identify the com.qa_wall_logger_client.log;
      */
-    public Log(final String id, final Type type, long time, String message, String deviceId)
-    {
+    public Log(final String id, final Type type, long time, String message, String deviceId) {
         this.id = id;
         this.type = type;
         this.time = time;
@@ -28,28 +22,28 @@ public class Log
         this.deviceId = deviceId;
     }
 
-    public String getId()
-    {
+    @Override
+    public String getId() {
         return id;
     }
 
-    public Type getType()
-    {
+    @Override
+    public Type getType() {
         return type;
     }
 
-    public long getTime()
-    {
+    @Override
+    public long getTime() {
         return time;
     }
 
-    public String getMessage()
-    {
+    @Override
+    public String getMessage() {
         return message;
     }
 
-    public String getDeviceId()
-    {
+    @Override
+    public String getDeviceId() {
         return deviceId;
     }
 }

@@ -1,7 +1,9 @@
 package interceptor;
 
 import com.google.gson.Gson;
+import com.qa_wall_logger_client.IRemoteLogger;
 import com.qa_wall_logger_client.RemoteLogger;
+import com.qa_wall_logger_client.log.ILog;
 import com.qa_wall_logger_client.log.Log;
 import com.squareup.okhttp.*;
 
@@ -13,14 +15,16 @@ public class QAWallInterceptor implements Interceptor
 
     public static final MediaType JSON  = MediaType.parse("application/json; charset=utf-8");
 
-    private final RemoteLogger remoteLogger;
+    private final IRemoteLogger remoteLogger;
+    private final String deviceId;
 
-    public QAWallInterceptor(final String urlRemote)
+    public QAWallInterceptor(final String urlRemote, final String deviceId)
     {
-        remoteLogger = new RemoteLogger(new RemoteLogger.Listener()
+        this.deviceId = deviceId;
+        remoteLogger = new RemoteLogger(new IRemoteLogger.Listener()
         {
             @Override
-            public String onParseToJson(final Log log)
+            public String onParseToJson(final ILog log)
             {
                 return new Gson().toJson(log);
             }
@@ -57,8 +61,7 @@ public class QAWallInterceptor implements Interceptor
 
         Log logStart = new Log(START_END_EVENT, Log.Type.PERIOD_START, t1,
                 String.format("Sending request %s on %s%n%s",
-                        request.url(), chain.connection(), request.headers()),
-                "jUnitTestDevice");
+                        request.url(), chain.connection(), request.headers()), deviceId);
 
         remoteLogger.send(logStart);
 
@@ -68,8 +71,7 @@ public class QAWallInterceptor implements Interceptor
 
         Log logEnd = new Log(START_END_EVENT, Log.Type.PERIOD_END, t2,
                 String.format("Received response for %s in %.1fms%n%s",
-                        response.request().url(), (t2 - t1) / 1e6d,
-                        response.headers()), "jUnitTestDevice");
+                        response.request().url(), (t2 - t1) / 1e6d, response.headers()), deviceId);
 
         remoteLogger.send(logEnd);
 
