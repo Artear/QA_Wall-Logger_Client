@@ -26,12 +26,12 @@ public class QAWallInterceptor implements Interceptor
             }
 
             @Override
-            public void onSentToNetwork(final String parsedObject)
+            public void onWriteToLog(final String parsedLog)
             {
                 //Send data to server here
                 OkHttpClient client = new OkHttpClient();
 
-                RequestBody body = RequestBody.create(JSON, parsedObject);
+                RequestBody body = RequestBody.create(JSON, parsedLog);
                 Request request = new Request.Builder().url(urlRemote)
                         .post(body)
                         .build();

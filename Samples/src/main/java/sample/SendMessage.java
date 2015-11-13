@@ -20,7 +20,7 @@ public class SendMessage
             }
 
             @Override
-            public void onSentToNetwork(final String parsedObject)
+            public void onWriteToLog(final String parsedLog)
             {
                 //Send data to server here
             }

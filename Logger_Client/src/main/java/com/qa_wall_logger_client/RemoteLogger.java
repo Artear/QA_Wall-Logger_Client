@@ -16,13 +16,13 @@ public final class RemoteLogger
     {
         String parsedLog = listener.onParseToJson(log);
 
-        listener.onSentToNetwork(parsedLog);
+        listener.onWriteToLog(parsedLog);
     }
 
     public interface Listener
     {
         String onParseToJson(Log log);
 
-        void onSentToNetwork(String parsedObject);
+        void onWriteToLog(String parsedLog);
     }
 }
