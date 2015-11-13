@@ -9,6 +9,6 @@ repositories {
 jar.archiveName = "Logger_Client-debug.jar"
 
 dependencies {
-    provided project(':Logger_Client')
+    compile project(':Logger_Client')
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

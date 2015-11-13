@@ -1,4 +1,3 @@
-
 apply plugin: 'java'
 
 sourceCompatibility = 1.7
@@ -7,9 +6,9 @@ repositories {
     mavenCentral()
 }
 
+jar.archiveName = "Logger_Client-release.jar"
+
 dependencies {
-    compile project(':Logger_Client-debug')
-    compile 'com.google.code.gson:gson:2.4'
+    compile project(':Logger_Client')
     testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile 'com.squareup.okhttp:okhttp:2.5.0'
 }
