@@ -7,6 +7,8 @@ import com.qa_wall_logger_client.RemoteLogger;
 import com.qa_wall_logger_client.log.ILog;
 import com.qa_wall_logger_client.log.Log;
 
+import java.util.UUID;
+
 public class SendMessage
 {
     public static void main(String[] args) throws InterruptedException
@@ -34,15 +36,17 @@ public class SendMessage
 
         //Remote Logger usage
 
+        String uuid = UUID.randomUUID().toString();
+
         //Send Period
-        Log periodStart = new Log("Test1", Log.Type.PERIOD_START, System.currentTimeMillis(), "Hello World!");
+        Log periodStart = new Log("Test1", Log.Type.PERIOD_START, System.currentTimeMillis(), "Hello World!", uuid);
         remoteLogger.send(periodStart);
 
-        Log periodEnd = new Log("Test1", Log.Type.PERIOD_END, System.currentTimeMillis()+ 5000, "Bye Bye World!");
+        Log periodEnd = new Log("Test1", Log.Type.PERIOD_END, System.currentTimeMillis()+ 5000, "Bye Bye World!", uuid);
         remoteLogger.send(periodEnd);
 
         //Send time
-        Log timeLog = new Log("Test2", Log.Type.EVENT,  System.currentTimeMillis() ,"http://www.google.com");
+        Log timeLog = new Log("Test2", Log.Type.EVENT,  System.currentTimeMillis() ,"http://www.google.com", uuid);
         remoteLogger.send(timeLog);
     }
 }

@@ -8,6 +8,7 @@ package com.qa_wall_logger_client.log;
  * type    {@link Type Type} indicating the log type;
  * time    Epoch (milliseconds since 1 jan 1970) when the period start;
  * message a message to identify the com.qa_wall_logger_client.log;
+ * deviceId id identifying the device;
  */
 public interface ILog {
     public enum Type {
@@ -21,4 +22,6 @@ public interface ILog {
     public long getTime();
 
     public String getMessage();
+
+    public String getDeviceId();
 }

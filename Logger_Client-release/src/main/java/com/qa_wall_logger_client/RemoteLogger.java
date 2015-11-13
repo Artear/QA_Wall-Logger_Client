@@ -8,7 +8,7 @@ import com.qa_wall_logger_client.log.ILog;
  */
 public final class RemoteLogger implements IRemoteLogger
 {
-    public RemoteLogger(Listener listener)
+    public RemoteLogger(final Listener listener)
     {
     }
 
