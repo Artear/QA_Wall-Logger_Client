@@ -46,6 +46,11 @@ project(':Logger_Client-debug') {
     dependencies {
         compile project(':Logger_Client')
     }
+
+    task build(type: Jar, overwrite: true, dependsOn: ':Logger_Client:compileJava'){
+        from files(project(':Logger_Client-debug').sourceSets.main.output)
+        from files(project(':Logger_Client').sourceSets.main.output)
+    }
 }
 
 project(':Logger_Client-release') {
@@ -53,6 +58,11 @@ project(':Logger_Client-release') {
 
     dependencies {
         compile project(':Logger_Client')
+    }
+
+    task build(type: Jar, overwrite: true, dependsOn: ':Logger_Client:compileJava'){
+        from files(project(':Logger_Client-release').sourceSets.main.output)
+        from files(project(':Logger_Client').sourceSets.main.output)
     }
 }
 
