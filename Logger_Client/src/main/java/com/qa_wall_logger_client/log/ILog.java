@@ -11,17 +11,17 @@ package com.qa_wall_logger_client.log;
  * deviceId id identifying the device;
  */
 public interface ILog {
-    public enum Type {
+    enum Type {
         PERIOD_START, PERIOD_END, EVENT
     }
 
-    public String getId();
+    String getId();
 
-    public Type getType();
+    Type getType();
 
-    public long getTime();
+    long getTime();
 
-    public String getMessage();
+    String getMessage();
 
-    public String getDeviceId();
+    String getDeviceId();
 }
